@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <Display time={time} defaultScreen={defaultScreen} />
+      <Display time={time} showBtn={defaultScreen} />
       {defaultScreen
         ? <Button name={"запуск"} click={startFunc} />
         : <div className='btn-container'>
