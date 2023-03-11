@@ -4,8 +4,15 @@ const ButtonSet = ({angle, keyWord, setTime}) => {
 
   const handleClick = (e) => {
     if (!angle) {
+      
         setTime(time => {
-          time[keyWord]++;
+          if((time.s < 59 && keyWord === "s") || (time.m < 59 && keyWord === "m")) {
+            time[keyWord]++;
+            return {...time};
+          } else if(time.h < 23 && keyWord === "h"){
+            time[keyWord]++;
+            return {...time};
+          }
           return {...time};
         })
     }
@@ -13,7 +20,6 @@ const ButtonSet = ({angle, keyWord, setTime}) => {
       setTime(time => {
         if (time[keyWord] > 0) {
           time[keyWord]--;
-
         }
         return {...time};
       })
