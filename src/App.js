@@ -6,14 +6,16 @@ import { useState } from 'react';
 function App() {
   const [time, setTime] = useState({s: 3, m: 1, h: 23});
   const [showBtn, setShowBtn] = useState(true);
+  const [interv, setInterv] = useState();
   const [pause, setPause] = useState(false);
 
   const title = pause ? "продолжить" : "пауза";
 
-const start = () => {
-  run();
-  setInterval(run, 100); 
-}
+  const startFunc = () => {
+    run();
+    setInterv(setInterval(run, 100)); 
+    setShowBtn(false);
+  }
 
   var updateHour   = time.h;
   var updateMinute = time.m;
@@ -31,15 +33,25 @@ const start = () => {
     }
     return setTime({s: updateSecond, m: updateMinute, h: updateHour})
   }
+  
+  const pauseFunc = () => {
+    if (!pause) {
+      clearInterval(interv);
+      setPause(!pause)
+    } else {
+      startFunc();
+      setPause(!pause)
+    }
+  }
 
   return (
     <div className="App">
       <Display time={time} showBtn={showBtn} />
       {showBtn
-        ? <Button name={"запуск"} click={start} />
+        ? <Button name={"запуск"} click={startFunc} />
         : <div className='btn-container'>
             <Button name={"стоп"}/>
-            <Button name={title} />
+            <Button name={title} click={pauseFunc} />
           </div>
       }
     </div>

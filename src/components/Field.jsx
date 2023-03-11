@@ -2,7 +2,6 @@ import React from 'react';
 import ButtonSet from './ButtonSet';
 
 const Field = ({time, showBtn}) => {
-  console.log("show: ", showBtn)
   return (
     <div className='field'>
       {showBtn ? <ButtonSet /> : null}
