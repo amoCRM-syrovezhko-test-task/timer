@@ -8,17 +8,17 @@ const Display = ({time, showBtn}) => {
     <main className='main'>
       <Field
         time={
-            (time.m >= 10)
-            ? time.m 
-            : "0" + time.m
+            (time.h >= 10)
+            ? time.h 
+            : "0" + time.h
           }
           showBtn={showBtn} />
       <Spacer />
       <Field
         time={
-            (time.h >= 10)
-            ? time.h 
-            : "0" + time.h
+            (time.m >= 10)
+            ? time.m 
+            : "0" + time.m
           }
           showBtn={showBtn} />
       
