@@ -14,7 +14,7 @@ function App() {
   const startFunc = () => {
     if (time.h > 0 || time.m > 0 || time.s > 0) {
       run();
-      setInterv(setInterval(run, 100)); 
+      setInterv(setInterval(run, 1000)); 
       setDefaultScreen(false);
     }
   }
