@@ -5,16 +5,18 @@ import { useState } from 'react';
 
 function App() {
   const [time, setTime] = useState({s: 3, m: 1, h: 23});
-  const [showBtn, setShowBtn] = useState(true);
+  const [defaultScreen, setDefaultScreen] = useState(true);
   const [interv, setInterv] = useState();
   const [pause, setPause] = useState(false);
 
   const title = pause ? "продолжить" : "пауза";
 
   const startFunc = () => {
-    run();
-    setInterv(setInterval(run, 100)); 
-    setShowBtn(false);
+    if (updateHour > 0 || updateMinute > 0 || updateSecond > 0) {
+      run();
+      setInterv(setInterval(run, 100)); 
+      setDefaultScreen(false);
+    }
   }
 
   var updateHour   = time.h;
@@ -47,13 +49,13 @@ function App() {
   const stopFunc = () => {
     clearInterval(interv);
     setTime({s: 0, m: 0, h: 0});
-    setShowBtn(true);
+    setDefaultScreen(true);
   }
 
   return (
     <div className="App">
-      <Display time={time} showBtn={showBtn} />
-      {showBtn
+      <Display time={time} defaultScreen={defaultScreen} />
+      {defaultScreen
         ? <Button name={"запуск"} click={startFunc} />
         : <div className='btn-container'>
             <Button name={"стоп"} click={stopFunc} />
