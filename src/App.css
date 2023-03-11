@@ -12,7 +12,7 @@ html {
   --background: #000000;
   --text: #ffffff;
   --active: #808080;
-  --main-width: 55rem;
+  --main-width: 61rem;
 }
 
 .App {
@@ -27,9 +27,24 @@ html {
 .main {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: var(--main-width);
   height: 40rem;
-  margin: 5rem;
+  margin: 5rem 0;
+}
+
+.spacer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 15%;
+}
+
+.spacer-item {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--text);
+  border-radius: 50%;
 }
 
 .field {
