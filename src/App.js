@@ -44,13 +44,19 @@ function App() {
     }
   }
 
+  const stopFunc = () => {
+    clearInterval(interv);
+    setTime({s: 0, m: 0, h: 0});
+    setShowBtn(true);
+  }
+
   return (
     <div className="App">
       <Display time={time} showBtn={showBtn} />
       {showBtn
         ? <Button name={"запуск"} click={startFunc} />
         : <div className='btn-container'>
-            <Button name={"стоп"}/>
+            <Button name={"стоп"} click={stopFunc} />
             <Button name={title} click={pauseFunc} />
           </div>
       }
