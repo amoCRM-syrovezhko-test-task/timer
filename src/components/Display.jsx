@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Field from './Field';
 
-const Display = () => {
+const Display = ({time, showBtn}) => {
+
   return (
     <main className='main'>
-      <h1>Display</h1>
+      <Field time={time.m} showBtn={showBtn} />
+      <Field time={time.h} showBtn={showBtn} />
+      <Field time={time.s} showBtn={showBtn} />
     </main>
   );
 };

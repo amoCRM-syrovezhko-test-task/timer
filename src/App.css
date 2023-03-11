@@ -8,8 +8,15 @@ html {
   font-size: 10px;
 }
 
+:root {
+  --background: #000000;
+  --text: #ffffff;
+  --active: #808080;
+  --main-width: 55rem;
+}
+
 .App {
-  background-color: black;
+  background-color: var(--background);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -17,7 +24,64 @@ html {
   flex-direction: column;
 }
 
-h1 {
-  color: #ffff;
+.main {
+  display: flex;
+  justify-content: space-between;
+  width: var(--main-width);
+  height: 40rem;
+  margin: 5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40rem;
+}
+
+.field-value {
+  color: var(--text);
   font-size: 10rem;
+  border: 1rem solid var(--text);
+  width: 17rem;
+  height: 17rem;
+  border-radius: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3.1rem 0;
+}
+
+.btn {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  box-shadow: 0 1.2em 1em var(--active);
+}
+.btn:active{
+  border-bottom-color: var(--active);
+}
+
+.btn-container {
+  display: flex;
+  width: var(--main-width);
+  justify-content: space-around;
+}
+
+.btn-set {
+  width: 0; 
+  height: 0; 
+  border-left: 5rem solid var(--background);
+  border-right: 5rem solid var(--background);
+  border-bottom: 8rem solid var(--text);
+}
+
+.btn-control {
+  border: 1rem solid var(--text);
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
 }
