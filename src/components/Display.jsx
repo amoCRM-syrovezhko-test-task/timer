@@ -5,9 +5,27 @@ const Display = ({time, showBtn}) => {
 
   return (
     <main className='main'>
-      <Field time={time.m} showBtn={showBtn} />
-      <Field time={time.h} showBtn={showBtn} />
-      <Field time={time.s} showBtn={showBtn} />
+      <Field
+        time={
+            (time.m >= 10)
+            ? time.m 
+            : "0" + time.m
+          }
+          showBtn={showBtn} />
+      <Field
+        time={
+            (time.h >= 10)
+            ? time.h 
+            : "0" + time.h
+          }
+          showBtn={showBtn} />
+      <Field
+        time={
+            (time.s >= 10)
+            ? time.s 
+            : "0" + time.s
+          }
+          showBtn={showBtn} />
     </main>
   );
 };
