@@ -4,7 +4,7 @@ import Button from './components/Button';
 import { useState } from 'react';
 
 function App() {
-  const [time, setTime] = useState({s: 3, m: 1, h: 23});
+  const [time, setTime] = useState({s: 0, m: 0, h: 0});
   const [defaultScreen, setDefaultScreen] = useState(true);
   const [interv, setInterv] = useState();
   const [pause, setPause] = useState(false);
@@ -12,28 +12,24 @@ function App() {
   const title = pause ? "продолжить" : "пауза";
 
   const startFunc = () => {
-    if (updateHour > 0 || updateMinute > 0 || updateSecond > 0) {
+    if (time.h > 0 || time.m > 0 || time.s > 0) {
       run();
       setInterv(setInterval(run, 100)); 
       setDefaultScreen(false);
     }
   }
 
-  var updateHour   = time.h;
-  var updateMinute = time.m;
-  var updateSecond = time.s;
-
   const run = () => {
-    if (updateSecond === 0) {
-      updateMinute--;
-      updateSecond = 60;
+    if (time.s === 0) {
+      time.m--;
+      time.s = 60;
     }
-    updateSecond--;
-    if (updateMinute < 0){
-      updateHour--;
-      updateMinute = 59;
+    time.s--;
+    if (time.m < 0){
+      time.h--;
+      time.m = 59;
     }
-    return setTime({s: updateSecond, m: updateMinute, h: updateHour})
+    return setTime({s: time.s, m: time.m, h: time.h})
   }
   
   const pauseFunc = () => {
@@ -52,9 +48,13 @@ function App() {
     setDefaultScreen(true);
   }
 
+
   return (
     <div className="App">
-      <Display time={time} showBtn={defaultScreen} />
+      <Display
+        time={time}
+        setTime={setTime}
+        showBtn={defaultScreen} />
       {defaultScreen
         ? <Button name={"запуск"} click={startFunc} />
         : <div className='btn-container'>
