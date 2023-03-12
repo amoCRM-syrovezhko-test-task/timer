@@ -4,7 +4,7 @@ import Button from './components/Button';
 import { useState } from 'react';
 
 function App() {
-  const [time, setTime] = useState({s: 0, m: 0, h: 0});
+  const [time, setTime] = useState({s: 15, m: 36, h: 13});
   const [defaultScreen, setDefaultScreen] = useState(true);
   const [interv, setInterv] = useState();
   const [pause, setPause] = useState(false);
@@ -14,7 +14,7 @@ function App() {
   const startFunc = () => {
     if (time.h > 0 || time.m > 0 || time.s > 0) {
       run();
-      setInterv(setInterval(run, 100)); 
+      setInterv(setInterval(run, 1000)); 
       setDefaultScreen(false);
     }
   }
